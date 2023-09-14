@@ -5,10 +5,16 @@ import {
   MdOutlineCalendarToday,
 } from "react-icons/md";
 import Card from "./Card";
+import Checkbox from "./Checkbox";
 
 const TodoItem = ({ todo, deleteTodo, editTodo }) => {
   //const [title, setTitle] = useState("This is a title");
   //const [task, setTask] = useState("This is a task");
+  const [done, setDone] = useState(todo.done);
+
+  const handleChange = (e) => {
+    setDone(e.target.checked);
+  };
 
   return (
     <Card>
@@ -27,6 +33,19 @@ const TodoItem = ({ todo, deleteTodo, editTodo }) => {
         </div>
       </div>
       <div className="task">{todo.task}</div>
+
+      <div className="flex-container">
+        <div className="day">
+          <MdOutlineCalendarToday className="calendar" />
+          <p>{todo.day}</p>
+        </div>
+
+        <Checkbox
+          label={done === true ? "Done" : "Doing"}
+          value={done}
+          onChange={handleChange}
+        />
+      </div>
     </Card>
   );
 };
