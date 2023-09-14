@@ -1,6 +1,6 @@
 import TodoItem from "./TodoItem";
 
-const TodoList = ({ todo }) => {
+const TodoList = ({ todo, deleteTodo }) => {
   if (!todo || todo.length === 0) {
     return <p>No tasks yet!</p>;
   }
@@ -8,7 +8,7 @@ const TodoList = ({ todo }) => {
   return (
     <div className="list">
       {todo.map((todo) => (
-        <TodoItem todo={todo} key={todo.id} />
+        <TodoItem todo={todo} key={todo.id} deleteTodo={deleteTodo} />
       ))}
     </div>
   );
