@@ -1,5 +1,6 @@
 import { useState } from "react";
 import TodoList from "./TodoList";
+import TodoForm from "./TodoForm";
 import todoData from "../data/TodoData";
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
 
   return (
     <div className="container">
+      <TodoForm />
       <TodoList todo={todos} deleteTodo={deleteTodo} />
     </div>
   );
