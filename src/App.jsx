@@ -6,6 +6,7 @@ import TodoList from "./components/TodoList";
 import todoData from "./data/TodoData";
 import Home from "./components/Home";
 import Login from "./components/Login";
+import MultipleState from "./example/MultipleState";
 
 function App() {
   //const [todos, setTodos] = useState(todoData);
@@ -22,3 +23,5 @@ function App() {
 }
 
 export default App;
+
+//   <Route path="/" element={<MultipleState />} />
