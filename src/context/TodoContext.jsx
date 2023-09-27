@@ -15,19 +15,38 @@ const TodoProvider = ({ children }) => {
     done: false,
   });
 
-  // load todos
-  /* useEffect(() => {
-    fetchTodos();
-  }, [todo]); */
+  const [todoEdit, setTodoEdit] = useState({
+    item: {},
+    edit: false,
+  });
 
+  // FIXED
   // fetch todos
-  const fetchTodos = async () => {
-    try {
-      const res = await axios.get(`${apiUrl}/test/todo`);
-      setTodo(res.data);
-    } catch (err) {
-      console.log("Error fetching data: " + err);
-    }
+  useEffect(() => {
+    const fetchTodos = async () => {
+      try {
+        const res = await axios.get(`${apiUrl}/test/todo`);
+        //carouselsPrev => [...carouselsPrev, res.data
+        setTodo(res.data);
+      } catch (err) {
+        console.log("Error fetching data: " + err);
+      }
+    };
+    fetchTodos();
+  }, []);
+
+  const editTodo = (item) => {
+    setTodoEdit({
+      item,
+      edit: true,
+    });
+  };
+
+  const doneTodo = (item) => {
+    setTodoDone({
+      item,
+      done: true,
+    });
   };
 
   // add todos
@@ -41,7 +60,15 @@ const TodoProvider = ({ children }) => {
 
   return (
     <TodoContext.Provider
-      value={{ todo, setTodo, fetchTodos, todoDone, addTodo }}
+      value={{
+        todo,
+        setTodo,
+        todoDone,
+        addTodo,
+        editTodo,
+        todoEdit,
+        doneTodo,
+      }}
     >
       {children}
     </TodoContext.Provider>

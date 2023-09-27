@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { TodoContext } from "../context/TodoContext";
 import Card from "./Card";
 import Button from "./Button";
@@ -8,7 +8,7 @@ const TodoForm = () => {
   const [description, setDescription] = useState("");
   const [day, setDay] = useState("");
 
-  const { addTodo } = useContext(TodoContext);
+  const { addTodo, todo, setTodo } = useContext(TodoContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,11 +21,14 @@ const TodoForm = () => {
     };
 
     addTodo(newTodo);
+    // fix
+    setTodo([...todo, newTodo]);
     console.log(newTodo);
 
     setTitle("");
     setDescription("");
     setDay("");
+    setStatus(false);
   };
 
   return (
