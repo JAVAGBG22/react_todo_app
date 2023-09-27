@@ -1,26 +1,30 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { TodoContext } from "../context/TodoContext";
 import Card from "./Card";
 import Button from "./Button";
 
-const TodoForm = ({ addTodo }) => {
+const TodoForm = () => {
   const [title, setTitle] = useState("");
-  const [task, setTask] = useState("");
+  const [description, setDescription] = useState("");
   const [day, setDay] = useState("");
+
+  const { addTodo } = useContext(TodoContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const newTodo = {
       title,
-      task,
+      description,
       day,
+      done: false,
     };
 
     addTodo(newTodo);
     console.log(newTodo);
 
     setTitle("");
-    setTask("");
+    setDescription("");
     setDay("");
   };
 
@@ -31,8 +35,11 @@ const TodoForm = ({ addTodo }) => {
           <h1>Add ToDo</h1>
           <label>Title</label>
           <input value={title} onChange={(e) => setTitle(e.target.value)} />
-          <label>Task</label>
-          <input value={task} onChange={(e) => setTask(e.target.value)} />
+          <label>description</label>
+          <input
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
           <label>Day</label>
           <select value={day} onChange={(e) => setDay(e.target.value)}>
             <option value="" disabled={true}>

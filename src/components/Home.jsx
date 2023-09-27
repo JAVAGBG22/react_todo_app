@@ -5,23 +5,23 @@ import TodoForm from "./TodoForm";
 import todoData from "../data/TodoData";
 
 const Home = () => {
-  const [todos, setTodos] = useState(todoData);
+  //const [todos, setTodos] = useState(todoData);
 
-  const addTodo = (newTodo) => {
+  /*  const addTodo = (newTodo) => {
     newTodo.id = uuidv4();
-    setTodos([newTodo, ...todos]);
+    //setTodos([newTodo, ...todos]);
   };
 
   const deleteTodo = (id) => {
     if (window.confirm("Are you sure you want to delete?")) {
-      setTodos(todos.filter((item) => item.id !== id));
+      //setTodos(todos.filter((item) => item.id !== id));
     }
-  };
+  }; */
 
   return (
     <div className="container">
-      <TodoForm addTodo={addTodo} />
-      <TodoList todo={todos} deleteTodo={deleteTodo} />
+      <TodoForm />
+      <TodoList />
     </div>
   );
 };

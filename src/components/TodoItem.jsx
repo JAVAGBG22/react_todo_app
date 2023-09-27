@@ -1,16 +1,25 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import {
   MdDeleteForever,
   MdEdit,
   MdOutlineCalendarToday,
 } from "react-icons/md";
+import { TodoContext } from "../context/TodoContext";
 import Card from "./Card";
 import Checkbox from "./Checkbox";
 
-const TodoItem = ({ todo, deleteTodo, editTodo }) => {
+const TodoItem = ({ todo }) => {
   //const [title, setTitle] = useState("This is a title");
-  //const [task, setTask] = useState("This is a task");
+  //const [description, setdescription] = useState("This is a description");
   const [done, setDone] = useState(todo.done);
+
+  const { todoDone } = useContext(TodoContext);
+
+  useEffect(() => {
+    if (todoDone.done === true) {
+      setDone(todoDone.item.done);
+    }
+  }, [todoDone]);
 
   const handleChange = (e) => {
     setDone(e.target.checked);
@@ -22,17 +31,11 @@ const TodoItem = ({ todo, deleteTodo, editTodo }) => {
         <div className="title">{todo.title}</div>
 
         <div className="btns">
-          <MdEdit
-            style={{ color: "#f7cd62", marginRight: ".5rem" }}
-            onClick={() => editTodo(todo)}
-          />
-          <MdDeleteForever
-            style={{ color: "#ed844f" }}
-            onClick={() => deleteTodo(todo.id)}
-          />
+          <MdEdit style={{ color: "#f7cd62", marginRight: ".5rem" }} />
+          <MdDeleteForever style={{ color: "#ed844f" }} />
         </div>
       </div>
-      <div className="task">{todo.task}</div>
+      <div className="description">{todo.description}</div>
 
       <div className="flex-container">
         <div className="day">

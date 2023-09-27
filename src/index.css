@@ -242,6 +242,20 @@ header h1 {
   color: #ed844f;
 }
 
+.logout_box {
+  display: flex;
+  align-items: baseline;
+  cursor: pointer;
+}
+
+.logout {
+  color: white;
+  font-size: 1.7rem;
+  position: relative;
+  top: 5px;
+  right: 5px;
+}
+
 .login_box {
   display: flex;
   align-items: baseline;

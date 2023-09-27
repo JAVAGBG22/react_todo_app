@@ -1,4 +1,4 @@
-import { BiLogIn } from "react-icons/bi";
+import { BiLogIn, BiLogOut } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -16,7 +16,9 @@ const Header = () => {
         </Link>
       </div>
 
-      <div className="menu">Menu</div>
+      <div className="logout_box">
+        <BiLogOut className="logout" /> Log Out
+      </div>
     </header>
   );
 };
