@@ -43,7 +43,6 @@ const Login = () => {
       console.log("User logged in");
 
       // redirect user to home page
-
       return navigate("/");
     } catch (err) {
       console.log("Error: " + err);

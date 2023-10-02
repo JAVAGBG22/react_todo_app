@@ -8,6 +8,8 @@ import TodoList from "./components/TodoList";
 import todoData from "./data/TodoData";
 import Home from "./components/Home";
 import Login from "./components/Login";
+import Test from "./components/Test";
+import PrivateRoute from "./components/PrivateRoute";
 import MultipleState from "./example/MultipleState";
 
 function App() {
@@ -21,6 +23,14 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
+            <Route
+              path="/test"
+              element={
+                <PrivateRoute>
+                  <Test />
+                </PrivateRoute>
+              }
+            />
           </Routes>
         </BrowserRouter>
       </TodoProvider>
